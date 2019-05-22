@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel=""   
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Ninja Gold</title>
+</head>
+<body>
+
+    <div class="container wrapper">
+            <div class="jumbotron jumbotron-fluid">
+                    <img src="{{ url_for('static', filename='img/ninja-big.gif') }}">
+                    <div class="container">
+                      <h1 class="display-4">Ninja Gold</h1>
+                      <p class="lead">Choose a mission and reap the rewards!</p>
+                    </div>
+            </div>
+            
+        <p>Gold: {{session['count']}}<img src="{{ url_for('static', filename='img/goldcoin.gif') }}"></p>
+        
+        <div class="cards">   
+            <div class="card card text-center" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='img/farm.gif') }}">
+                <div class="card-body">
+                    <h5 class="card-title">Farm</h5>
+                    <p class="card-text">Ninjas are rescourceful! Work at the farm and sell crops at the market?</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="farm"/>
+                        <input class="btn btn-outline-success" type="submit" value="Farm!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card card text-center" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='img/cave.gif') }}">
+                <div class="card-body">
+                    <h5 class="card-title">Cave</h5>
+                    <p class="card-text">Ninjas are daring! Test your skills and loot some caves? Be careful, you never know where an enemy may hide!</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="cave"/>
+                        <input class="btn btn-outline-success" type="submit" value="Explore cave!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card card text-center" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='img/house.gif') }}">
+                <div class="card-body">
+                    <h5 class="card-title">House</h5>
+                    <p class="card-text">Ninjas are stealthy! Sneak into enemy home to loot? Careful, not all enemies sleep with both eyes closed!</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="house"/>
+                        <input class="btn btn-outline-success" type="submit" value="Sneak into a house!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='img/casino.gif') }}">
+                <div class="card-body">
+                    <h5 class="card-title">Casino</h5>
+                    <p class="card-text">Cash out! Ninja's need to blow off steam after a long days work. Besides, what good is all this gold if you can't spend it?</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="casino"/>
+                        <input class="btn btn-outline-success" type="submit" value="Test your luck!"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form>z
+            <input type="hidden" name="building">
+        </form>
+        <form class="reset" action="/process_money" method="post">
+            <input type="hidden" name="building" value="reset"/>
+            <input class="btn btn-danger" type="submit" value="Reset game"/>
+            <button type="button" onclick="window.location.href='{{ url_for( 'dataTablePage' , table='Y' ) }}';">Display Table Y</button>
+        </form>
+    </div> 
+    
+    
+</body>
+</html>
